@@ -4,8 +4,7 @@ public class RemoveAllAdjacentDuplicatesInString {
 // new string. las_removed is a
 // pointer to last_removed character
     static String removeUtil(String str,
-                             char last_removed)
-    {
+                             char last_removed) {
 
         // If length of string is 1 or 0
         if (str.length() == 0 || str.length() == 1)
@@ -14,8 +13,7 @@ public class RemoveAllAdjacentDuplicatesInString {
         // Remove leftmost same characters
         // and recur for remaining
         // string
-        if (str.charAt(0) == str.charAt(1))
-        {
+        if (str.charAt(0) == str.charAt(1)) {
             last_removed = str.charAt(0);
             while (str.length() > 1 && str.charAt(0) ==
                     str.charAt(1))
@@ -30,18 +28,17 @@ public class RemoveAllAdjacentDuplicatesInString {
         // character and recursively
         // remove characters from remaining string
         String rem_str = removeUtil(str.substring(
-                1,str.length()), last_removed);
+                1, str.length()), last_removed);
 
         // Check if the first character of
         // the rem_string matches with
         // the first character of the original string
         if (rem_str.length() != 0 &&
-                rem_str.charAt(0) == str.charAt(0))
-        {
+                rem_str.charAt(0) == str.charAt(0)) {
             last_removed = str.charAt(0);
 
             // Remove first character
-            return rem_str.substring(1,rem_str.length());
+            return rem_str.substring(1, rem_str.length());
         }
 
         // If remaining string becomes
@@ -61,15 +58,13 @@ public class RemoveAllAdjacentDuplicatesInString {
         return (str.charAt(0) + rem_str);
     }
 
-    static String remove(String str)
-    {
+    static String remove(String str) {
         char last_removed = '\0';
         return removeUtil(str, last_removed);
     }
 
     // Driver code
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         String str = "abbaca";
         System.out.println(remove(str));
     }
