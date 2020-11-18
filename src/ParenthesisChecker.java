@@ -17,6 +17,10 @@ public class ParenthesisChecker {
         while(i<len){
             Character ch = new Character(x.charAt(i));
 
+            if( stk.empty() && ( ch.equals(')') || ch.equals('}') || ch.equals(']') ) ){
+                return false;
+            }
+
             if( ch.equals('(') || ch.equals('{') || ch.equals('[') ){
                 stk.push(ch);
             }
@@ -44,6 +48,6 @@ public class ParenthesisChecker {
 
     // Driver code
     public static void main(String args[]) {
-        System.out.println(ispar("([]"));
+        System.out.println(ispar("[({[([{}])]})}"));
     }
 }
